@@ -1,0 +1,20 @@
+<%= render "navbar"%>
+<div class="d-flex flex-column align-items-center p-3 m-3 gap-3">
+  <h1 class="font-monospace">Yes restaurants</h1>
+  <div class="cards">
+    <% @restaurants.each do |restaurant| %>
+      <div class="bd-callout bd-callout-info p-3 mb-2 shadow-sm d-flex justify-content-around gap-5 align-items-center">
+        <div>
+          <%= image_tag "https://thecatapi.com/api/images/get?format=src&type=gif", alt: "cat photo", class: "img-thumbnail rounded float-start" %>
+        </div>
+        <div>
+          <%= link_to restaurant_path(restaurant), class: "btn btn-outline-warning" do %>
+            <%= restaurant.name %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <hr>
+  <%= link_to "Add a restaurant", new_restaurant_path, class: "btn btn-outline-danger"%>
+</div>

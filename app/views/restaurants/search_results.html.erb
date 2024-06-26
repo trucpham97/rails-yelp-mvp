@@ -1,0 +1,19 @@
+<%= render "navbar"%>
+<div class="d-flex flex-column align-items-center p-3 m-3 gap-3">
+  <h1 class="font-monospace">Search Results</h1>
+  <div class="cards">
+  <% if @results.any? %>
+    <% @results.each do |restaurant| %>
+      <div class="card" style="width: 18rem;">
+        <%= image_tag "https://thecatapi.com/api/images/get?format=src&type=gif",
+        alt: "cat photo", class: "card-img-top" %>
+        <div class="card-body">
+          <%= link_to restaurant.name, restaurant_path(restaurant), class: "card-link" %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No results found for '<%= @query %>'</p>
+  <% end %>
+  </div>
+</div>

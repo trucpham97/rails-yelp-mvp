@@ -1,0 +1,43 @@
+<%= render "navbar"%>
+<div class="d-flex flex-column align-items-center p-3 m-3 gap-3">
+  <h1 class="font-monospace"><%= @restaurant.name %></h1>
+  <div class="bg-dark rounded shadow-lg p-3">
+    <p>
+      <strong>Rating:</strong> <%= @rating %> -
+      <strong>Cuisine:</strong> <%= @restaurant.category %>
+    </p>
+    <hr>
+    <p>Address: <%= @restaurant.address %></p>
+    <hr>
+    <p>Phone number: <%= @restaurant.phone_number %></p>
+  </div>
+  <h2>Check our reviews</h2>
+  <div class="cards gap-3">
+    <% @restaurant.reviews.each do |review| %>
+      <div class="card bg-light" style="width: 18rem;">
+        <div class="card-header">
+          <%= review.rating %>/5
+        </div>
+        <div class="card-body">
+          <p class="card-text"><%= review.content %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <br>
+
+  <%= link_to new_restaurant_review_path(@restaurant) do %>
+    <p class="btn btn-success position-relative">Leave a review
+      <span class="position-absolute top-10 start-100 translate-middle badge rounded-pill">
+        <?xml version="1.0" ?>
+        <svg height="48" viewBox="0 0 48 48" width="48" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h48v48h-48zm30.71 12.83l-3.54-3.54c-.39-.39-1.02-.39-1.41 0l-13.76
+          13.76v4.95h4.95l13.76-13.76c.39-.39.39-1.02 0-1.41z" fill="none"/>
+          <path d="M40 4h-32c-2.21 0-3.98 1.79-3.98 4l-.02 36 8-8h28c2.21 0 4-1.79
+          4-4v-24c0-2.21-1.79-4-4-4zm-28 24v-4.95l13.76-13.76c.39-.39 1.02-.39 1.41
+          0l3.54 3.54c.39.39.39 1.02 0 1.41l-13.76 13.76h-4.95zm24 0h-15l4-4h11v4z"/>
+        </svg>
+      </span>
+    </p>
+  <% end %>
+</div>

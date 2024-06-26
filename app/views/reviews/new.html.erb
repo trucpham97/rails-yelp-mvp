@@ -1,0 +1,9 @@
+<%= render "restaurants/navbar"%>
+<div class="d-flex flex-column align-items-center p-3">
+  <h1>New review for this restaurant</h1>
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.button :submit, "Submit your review", class: "btn btn-warning p-3" %>
+  <% end %>
+<div>
